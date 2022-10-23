@@ -1,0 +1,6 @@
+#macOS Operating System Files
+.DS_Store
+
+#Parcel Folders
+/dist/**
+/.parcel-cache/**
