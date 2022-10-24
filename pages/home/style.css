@@ -7,7 +7,7 @@
 
 img, svg {
     display:block;
-    height: 100%;
+    width: 100%;
 }
 ul {
     list-style-type: none;
@@ -17,9 +17,13 @@ ul {
     font-family:  "Roboto", sans-serif;
 }
 
+body {
+    width: 100%;
+}
+
 .hero {
-    height: 100vh;
-    width: 100vw;
+    height: max(100vh, 600px);
+    width: 100%;
 
     background-image: url("~/images/wood_heroImage.png");
     background-repeat: no-repeat;
@@ -32,27 +36,34 @@ ul {
     align-items: center;
 }
 
-.nav-header {
-    padding-top: 2rem;
+.nav-header,.spacer-bottom{
     height: 10rem;
     width: 100%;
+}
+
+.nav-header {
+    letter-spacing: 2px;
+    padding-top: 2rem;
     color: white;
     text-transform: uppercase;
 
     display: flex;
     justify-content: center;
-    gap: 2rem;
     align-items: center;
 }
+
+
 .flex-hori {
+    flex-grow: 1;
+    flex-basis: 0;
     display: flex;
     justify-content: center;
     gap: 2rem;
-    width: 30%;
 
 }
 
 .nav-logo {
+    flex-grow: 0;
     height: 8.5rem;
     filter:brightness(105%);
     display: flex;
@@ -60,12 +71,37 @@ ul {
 }
 
 .center-logo {
-    height: min(50%, 296px);
+    max-width: 70%;
     
 }
 
-.spacer-bottom {
-    height: 10rem;
-    width: 50%;
+
+
+
+.flex-test {
+    width: 100%;
+    background-color: red;
+    display: flex;
+}
+.flex-test>div{
+    width: 20%;
+    flex-grow: 1; 
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
 }
 
+.flex-test>div:first-child{
+    background-color: aliceblue;
+    flex-grow: 1;
+}
+
+.flex-test>div:nth-child(2){
+    flex-grow: 1;
+    background-color: antiquewhite;
+}
+
+.flex-test>div:last-child{
+    flex-grow: 1;
+    background-color: silver;
+}
