@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    min-height: fit-content;
 }
 
 img, svg {
@@ -22,7 +21,7 @@ body {
 }
 
 .hero {
-    height: max(100vh, 750px);
+    height: max(100vh, 800px);
     width: 100%;
 
     background-image: url("~/images/wood_heroImage.png");
@@ -63,13 +62,15 @@ body {
 
 .flex-hori {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 
 }
 
 .nav-logo {
-    width: 10rem;
+    width: min(10rem,30vw);
+    height: auto;
     filter:brightness(105%);
 }
 
@@ -112,8 +113,7 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr min-content 1fr;
     row-gap: 1rem;
-    margin-bottom: 2rem;
-
+}
 }
 
 @media only screen and (prefers-reduced-motion: reduce) {  
