@@ -4,3 +4,6 @@
 #Parcel Folders
 /dist/**
 /.parcel-cache/**
+
+#node modules
+/node_modules/**
