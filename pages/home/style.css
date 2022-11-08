@@ -14,20 +14,45 @@ ul {
 
 :root{
     font-family:  "Roboto", sans-serif;
+    color:white;
 }
 
 body {
     width: 100%;
 }
 
-.hero {
-    height: max(100vh, 800px);
-    width: 100%;
+.mobile-menu-toggle {
+    display: none;
+}
 
+.hero::before{
+    content:"";
+    position:fixed;
+    left:0;
+    right:0;
+    z-index: -1;
+
+    display: block;
+    overflow: hidden;
+    width:100vw;
+    height:100vh;
+
+    
     background-image: url("~/images/wood_heroImage.png");
     background-repeat: no-repeat;
     background-size: cover;
     filter: saturate(110%) contrast(130%) brightness(80%);
+
+}
+
+.hero {
+    height: max(100vh, 800px);
+    width: 100%;
+
+    /* background-image: url("~/images/wood_heroImage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: saturate(110%) contrast(130%) brightness(80%); */
 
     display: flex;
     flex-direction: column;
@@ -35,7 +60,7 @@ body {
     align-items: center;
 }
 
-.test,.spacer-bottom{
+.nav-header,.spacer-bottom{
     flex-grow: 1;
     height: 10rem;
     width: 100%;
@@ -44,7 +69,7 @@ body {
 .nav-header {
     width: 100% ;
     letter-spacing: 2px;
-    /* padding-top: 2rem; */
+    padding-top: 2rem;
     color: white;
     text-transform: uppercase;
 
@@ -54,17 +79,23 @@ body {
     align-items: center;
 }
 
-.test{
+.hero-header{
     padding-top: 1rem;
     display: flex;
     align-items: flex-start;
 }
 
-.flex-hori {
+.menu-options {
+    position: fixed;
+    /* left:0px; */
+    bottom:0px;
+    width: 29rem;
+    margin-bottom: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    z-index: 2;
 
 }
 
@@ -79,36 +110,12 @@ body {
     
 }
 
-.flex-test {
-    width: 100%;
-    background-color: red;
-    display: flex;
-}
-
-.flex-test>div{
-    width: 20%;
-    flex-grow: 1; 
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.flex-test>div:first-child{
-    background-color: aliceblue;
-    flex-grow: 1;
-}
-
-.flex-test>div:nth-child(2){
-    flex-grow: 1;
+.page-break{
+    height: 200vh;
     background-color: antiquewhite;
 }
 
-.flex-test>div:last-child{
-    flex-grow: 1;
-    background-color: silver;
-}
-
-@media only screen and (max-width: 1024px){
+@media only screen and (max-width: 1000px){
 .nav-header{
     grid-template-columns: 1fr;
     grid-template-rows: 1fr min-content 1fr;
@@ -116,11 +123,23 @@ body {
 }
 }
 
+@media only screen and (max-width: 767px){
+    .nav-header{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr min-content 1fr;
+        row-gap: 1rem;
+    }
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
 @media only screen and (prefers-reduced-motion: reduce) {  
     * {
-      /* Very short durations means JavaScript that relies on events still works */
+    /* Very short durations means JavaScript that relies on events still works */
       animation-duration: 0.001ms !important;
-      animation-iteration-count:ß 1 !important;
+      animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
     }
-  }
+  } 
+ 
