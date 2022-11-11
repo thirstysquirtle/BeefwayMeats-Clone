@@ -17,7 +17,7 @@ ul {
 }
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
     font-family: "Roboto", sans-serif;
     color: white;
 }
@@ -31,12 +31,12 @@ body {
     display: none;
 }
 
-
 .hero-bg {
     visibility: hidden;
+    flex-grow: 0;
 }
 
-/* .hero-bg::before {
+.hero-bg::before {
     content: "";
     visibility: visible;
     position: fixed;
@@ -52,9 +52,9 @@ body {
     background-image: url("~/images/wood_heroImage3.png");
     background-repeat: no-repeat;
     background-size: cover;
-    filter: saturate(110%) contrast(130%) brightness(80%);
+    filter: saturate(105%) contrast(130%) brightness(80%);
 
-} */
+}
 
 .hero {
     /* height: max(100vh, 800px); */
@@ -62,22 +62,15 @@ body {
     height: 100vh;
     width: 100%;
 
-    background-image: url("~/images/wood_heroImage3.png");
+    /* background-image: url("~/images/wood_heroImage3.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-}
-
-.nav-header,
-.spacer-bottom {
-    flex-grow: 1;
-    height: 10rem;
-    width: 100%;
 }
 
 .nav-header {
@@ -93,6 +86,13 @@ body {
     align-items: center;
 }
 
+.hero-header,
+.spacer-bottom {
+    flex-grow: 1;
+    height: 10rem;
+    width: 100%;
+}
+
 .hero-header {
     padding-top: 1rem;
     display: flex;
@@ -100,11 +100,7 @@ body {
 }
 
 .menu-options {
-    position: fixed;
     /* left:0px; */
-    bottom: 0px;
-    width: 29rem;
-    margin-bottom: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -119,10 +115,12 @@ body {
     filter: brightness(105%);
 }
 
+
 .center-logo {
     max-width: 70%;
 
 }
+
 
 .page-break {
     height: 200vh;
@@ -139,9 +137,14 @@ body {
 
 @media only screen and (max-width: 767px) {
     .nav-header {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr min-content 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
         row-gap: 1rem;
+    }
+
+    .menu-options {
+        position: fixed;
+        top: -100vh;
     }
 
     .mobile-menu-toggle {
