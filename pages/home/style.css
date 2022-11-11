@@ -39,11 +39,10 @@ body {
 .hero-bg::before {
     content: "";
     visibility: visible;
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
-    z-index: -1;
-
+    z-index: 2;
     display: inline-block;
     width: 100vw;
     height: 100vh;
@@ -53,19 +52,12 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     filter: saturate(105%) contrast(130%) brightness(80%);
-
 }
 
 .hero {
-    /* height: max(100vh, 800px); */
     min-height: fit-content;
     height: 100vh;
     width: 100%;
-
-    /* background-image: url("~/images/wood_heroImage3.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed; */
 
     display: flex;
     flex-direction: column;
@@ -73,7 +65,23 @@ body {
     align-items: center;
 }
 
+#fixed-header {
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(38, 30, 28);
+    padding-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+#fixed-header>.nav-logo {
+    display: none;
+}
+
 .nav-header {
+    z-index: 2;
     width: 100%;
     letter-spacing: 2px;
     padding-top: 2rem;
@@ -94,13 +102,11 @@ body {
 }
 
 .hero-header {
-    padding-top: 1rem;
     display: flex;
     align-items: flex-start;
 }
 
 .menu-options {
-    /* left:0px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -118,7 +124,7 @@ body {
 
 .center-logo {
     max-width: 70%;
-
+    z-index: 2;
 }
 
 
@@ -127,19 +133,49 @@ body {
     background-color: antiquewhite;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1150px) {
     .nav-header {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr min-content 1fr;
         row-gap: 1rem;
     }
+
+    #fixed-header>.nav-logo {
+        display: none;
+    }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 947px) {
+
+    #fixed-header,
     .nav-header {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        row-gap: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0 0 10px 10px;
+
+    }
+
+    .nav-header {
+        padding: 1rem 1rem 1rem 1rem;
+    }
+
+    .nav-header>.nav-logo {
+        width: 7rem;
+    }
+
+    #fixed-header {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+
+    #fixed-header>.nav-logo {
+        display: block;
+        width: 4.5rem;
+    }
+
+
+    .mobile-menu-toggle {
+        justify-self: end;
     }
 
     .menu-options {
