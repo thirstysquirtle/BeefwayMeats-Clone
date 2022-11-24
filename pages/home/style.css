@@ -1,198 +1,215 @@
 *,
 ::after,
 ::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a {
+	all: unset;
 }
 
 img,
 svg {
-    display: block;
-    width: 100%;
+	display: block;
+	width: 100%;
 }
 
 ul {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 html {
-    /* scroll-behavior: smooth; */
-    font-family: "Roboto", sans-serif;
-    color: white;
+	/* scroll-behavior: smooth; */
+	font-family: "Roboto", sans-serif;
+	color: white;
 }
 
 body {
-    /* overflow-x: hidden; */
-    width: 100%;
-}
-
-.mobile-menu-toggle {
-    display: none;
+	/* overflow-x: hidden; */
+	width: 100%;
 }
 
 .hero-bg {
-    visibility: hidden;
-    flex-grow: 0;
+	visibility: hidden;
+	flex-grow: 0;
 }
 
 .hero-bg::before {
-    content: "";
-    visibility: visible;
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    display: inline-block;
-    width: 100vw;
-    height: 100vh;
+	content: "";
+	visibility: visible;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	display: inline-block;
+	width: 100%;
+	height: 100vh;
 
-    overflow: hidden;
-    background-image: url("~/images/wood_heroImage3.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: saturate(105%) contrast(130%) brightness(80%);
+	overflow: hidden;
+	background-image: url("~/images/wood_heroImage3.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	filter: saturate(105%) contrast(130%) brightness(80%);
 }
 
 .hero {
-    min-height: fit-content;
-    height: 100vh;
-    width: 100%;
+	min-height: fit-content;
+	height: 100vh;
+	width: 100%;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
 #fixed-header {
-    padding-top: 0.5rem;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(38, 30, 28);
-    padding-bottom: 1rem;
-    position: fixed;
-    top: 0;
-    z-index: 2;
+	padding-top: 0.5rem;
+	display: flex;
+	justify-content: space-evenly;
+	background-color: rgb(38, 30, 28);
+	padding-bottom: 1rem;
+	position: fixed;
+	top: 0;
+	z-index: 2;
 }
 
-#fixed-header>.nav-logo {
-    display: none;
+#fixed-header > .nav-logo {
+	display: none;
 }
 
 .nav-header {
-    z-index: 2;
-    width: 100%;
-    letter-spacing: 2px;
-    padding-top: 2rem;
-    color: white;
-    text-transform: uppercase;
+	z-index: 2;
+	width: 100%;
+	letter-spacing: 2px;
+	padding-top: 2rem;
+	color: white;
+	text-transform: uppercase;
 
-    display: grid;
-    grid-template-columns: 1fr min-content 1fr;
-    justify-items: center;
-    align-items: center;
+	display: grid;
+	grid-template-columns: 1fr min-content 1fr;
+	justify-items: center;
+	align-items: center;
 }
 
 .hero-header,
 .spacer-bottom {
-    flex-grow: 1;
-    height: 10rem;
-    width: 100%;
+	flex-grow: 1;
+	height: 10rem;
+	width: 100%;
 }
 
 .hero-header {
-    display: flex;
-    align-items: flex-start;
+	display: flex;
+	align-items: flex-start;
 }
 
 .menu-options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    z-index: 2;
-
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2rem;
+	z-index: 2;
 }
 
 .nav-logo {
-    width: min(10rem, 30vw);
-    height: auto;
-    filter: brightness(105%);
+	width: min(10rem, 30vw);
+	height: auto;
+	filter: brightness(105%);
 }
-
 
 .center-logo {
-    max-width: 70%;
-    z-index: 2;
+	max-width: 70%;
+	z-index: 2;
 }
 
-
 .page-break {
-    height: 200vh;
-    background-color: antiquewhite;
+	height: 200vh;
+	background-color: gray;
+}
+
+.mobile-menu-close,
+.mobile-menu-open {
+	display: none;
 }
 
 @media only screen and (max-width: 1150px) {
-    .nav-header {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr min-content 1fr;
-        row-gap: 1rem;
-    }
-
-    #fixed-header>.nav-logo {
-        display: none;
-    }
+	.nav-header {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr min-content 1fr;
+		row-gap: 1rem;
+	}
 }
 
 @media only screen and (max-width: 947px) {
+	#fixed-header,
+	.nav-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-radius: 0 0 10px 10px;
+	}
 
-    #fixed-header,
-    .nav-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 0 0 10px 10px;
+	.nav-header {
+		padding: 1rem 1rem 1rem 1rem;
+	}
 
-    }
+	.nav-header > .nav-logo {
+		width: 7rem;
+	}
 
-    .nav-header {
-        padding: 1rem 1rem 1rem 1rem;
-    }
+	#fixed-header {
+		padding: 0.5rem 1rem 0.5rem 1rem;
+	}
 
-    .nav-header>.nav-logo {
-        width: 7rem;
-    }
+	#fixed-header > .nav-logo {
+		display: block;
+		width: 4.5rem;
+	}
 
-    #fixed-header {
-        padding: 0.5rem 1rem 0.5rem 1rem;
-    }
+	.menu-options {
+		position: fixed;
+		left: -100vw;
+		z-index: 999;
+		transition: left 0.5s ease-out;
 
-    #fixed-header>.nav-logo {
-        display: block;
-        width: 4.5rem;
-    }
+		display: flex;
+		padding: 1rem;
+		border-radius: 23px;
+		flex-direction: column;
+		background-color: black;
+	}
 
+	.menu-options.first {
+		top: 100px;
+	}
+	.menu-options.second {
+		top: 320px;
+	}
 
-    .mobile-menu-toggle {
-        justify-self: end;
-    }
+	.mobile-menu-open {
+		display: block;
+	}
 
-    .menu-options {
-        position: fixed;
-        top: -100vh;
-    }
+	#fixed-header:target .mobile-menu-open {
+		display: none;
+	}
+	#fixed-header:target .mobile-menu-close {
+		display: block;
+	}
 
-    .mobile-menu-toggle {
-        display: block;
-    }
+	#fixed-header:target .menu-options.second,
+	#fixed-header:target .menu-options.first {
+		left: 20px;
+	}
 }
 
 @media only screen and (prefers-reduced-motion: reduce) {
-    * {
-        /* Very short durations means JavaScript that relies on events still works */
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-    }
+	* {
+		/* Very short durations means JavaScript that relies on events still works */
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
 }
