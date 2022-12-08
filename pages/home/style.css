@@ -38,14 +38,12 @@ body {
 .hero-bg::before {
 	content: "";
 	visibility: visible;
-	position: absolute;
+	position: fixed;
 	left: 0;
 	right: 0;
-	z-index: 2;
-	display: inline-block;
 	width: 100%;
 	height: 100vh;
-
+	z-index: -999;
 	overflow: hidden;
 	background-image: url("~/images/wood_heroImage3.png");
 	background-repeat: no-repeat;
@@ -64,26 +62,11 @@ body {
 	align-items: center;
 }
 
-#fixed-header {
-	padding-top: 0.5rem;
-	display: flex;
-	justify-content: space-evenly;
-	background-color: rgb(38, 30, 28);
-	padding-bottom: 1rem;
-	position: fixed;
-	top: 0;
-	z-index: 2;
-}
-
-#fixed-header > .nav-logo {
-	display: none;
-}
-
 .nav-header {
-	z-index: 2;
 	width: 100%;
 	letter-spacing: 2px;
 	padding-top: 2rem;
+	padding-bottom: 2rem;
 	color: white;
 	text-transform: uppercase;
 
@@ -91,6 +74,19 @@ body {
 	grid-template-columns: 1fr min-content 1fr;
 	justify-items: center;
 	align-items: center;
+}
+
+.fixed-header-js {
+	position: fixed;
+	top: 0;
+	background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.25) 80%, transparent);
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.fixed-header-js > .nav-logo {
+	display: none;
 }
 
 .hero-header,
@@ -110,7 +106,6 @@ body {
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 2rem;
-	z-index: 2;
 }
 
 .nav-logo {
@@ -121,20 +116,18 @@ body {
 
 .center-logo {
 	max-width: 70%;
-	z-index: 2;
 }
 
 .page-break {
 	height: 200vh;
-	background-color: gray;
+	background-color: antiquewhite;
 }
 
-.mobile-menu-close,
-.mobile-menu-open {
+#mobile-hamburg {
 	display: none;
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1200px) {
 	.nav-header {
 		grid-template-columns: 1fr;
 		grid-template-rows: 1fr min-content 1fr;
@@ -143,71 +136,60 @@ body {
 }
 
 @media only screen and (max-width: 947px) {
-	#fixed-header,
 	.nav-header {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
-		border-radius: 0 0 10px 10px;
-	}
-
-	.nav-header {
-		padding: 1rem 1rem 1rem 1rem;
-	}
-
-	.nav-header > .nav-logo {
-		width: 7rem;
-	}
-
-	#fixed-header {
-		padding: 0.5rem 1rem 0.5rem 1rem;
-	}
-
-	#fixed-header > .nav-logo {
-		display: block;
-		width: 4.5rem;
+		padding: 1rem;
 	}
 
 	.menu-options {
-		position: fixed;
-		left: -100vw;
-		z-index: 999;
-		transition: left 0.5s ease-out;
-
-		display: flex;
-		padding: 1rem;
-		border-radius: 23px;
-		flex-direction: column;
-		background-color: black;
-	}
-
-	.menu-options.first {
-		top: 100px;
-	}
-	.menu-options.second {
-		top: 320px;
-	}
-
-	.mobile-menu-open {
-		display: block;
-	}
-
-	#fixed-header:target .mobile-menu-open {
 		display: none;
 	}
-	#fixed-header:target .mobile-menu-close {
+
+/*#region Mobile Menu Button*/
+	#mobile-hamburg {
 		display: block;
+		background-color: auzre;
+		width: 4rem;
+		border-radius: 15px;
+		border: 2px solid rgb(20, 20, 20);
+		fill: rgb(20, 20, 20);
 	}
 
-	#fixed-header:target .menu-options.second,
-	#fixed-header:target .menu-options.first {
-		left: 20px;
+	#hamburg-svg *{
+		transform-origin: center;
+		--animDuration: 200ms;
 	}
+
+	#hamburg-svg * {
+		transition: 
+			transform 100ms ease-out 0ms,
+		 	y var(--animDuration) linear 100ms,
+			opacity 0.001ms ease-out 100ms;
+	}
+
+	#hamburg-svg.hamburg-svg-close > * {
+		y: 44;
+		transition: 
+			y var(--animDuration), 
+			transform 100ms linear var(--animDuration),
+			opacity 0.001ms ease-out var(--animDuration);
+
+	}
+	#hamburg-svg.hamburg-svg-close > rect.top {
+		transform:rotate(45deg);
+	}
+	#hamburg-svg.hamburg-svg-close > rect.bottom {
+		transform:rotate(-45deg);
+	}
+	#hamburg-svg.hamburg-svg-close > rect.middle {
+		opacity: 0;
+	}
+/*#endregion*/
 }
 
 @media only screen and (prefers-reduced-motion: reduce) {
 	* {
-		/* Very short durations means JavaScript that relies on events still works */
 		animation-duration: 0.001ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.001ms !important;

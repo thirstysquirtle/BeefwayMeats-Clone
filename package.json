@@ -2,14 +2,20 @@
 	"name": "beefwaymeats",
 	"version": "1.0.0",
 	"description": "",
-	"main": "script.js",
 	"scripts": {
-		"start": "parcel ./pages/home/home.html"
+		"start": "parcel ./pages/home/home.html",
+		"build": "parcel build ./pages/home/home.html"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"parcel": "^2.7.0"
-	}
+		"autoprefixer": "^10.4.13",
+		"parcel": "^2.7.0",
+		"postcss": "^8.4.19"
+	},
+	"source": "pages/home/home.html",
+	"browserslist": [
+		"not dead"
+	]
 }
