@@ -79,11 +79,42 @@ body {
 .fixed-header-js {
 	position: fixed;
 	top: 0;
-	background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.25) 80%, transparent);
+	background: linear-gradient(rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 80%, transparent);
 	display: flex;
 	justify-content: center;
 	gap: 2rem;
+	animation: popIn 300ms ease-out forwards;
 }
+@keyframes popIn {
+	from {
+		top:-30vh;
+	}
+	to {
+		top:0;
+	}
+}
+.unfix-header-js {
+	animation: fadeOut 500ms linear forwards;
+}
+@keyframes fadeOut {
+	0%{
+		opacity: 1;
+		position: fixed;
+		top: 0;
+		background: linear-gradient(rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 80%, transparent);
+	}
+	50%{
+		opacity: 0;
+		background: unset;
+	}
+	51%{
+		position:block;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 
 .fixed-header-js > .nav-logo {
 	display: none;
@@ -138,8 +169,11 @@ body {
 @media only screen and (max-width: 947px) {
 	.nav-header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-start;
 		padding: 1rem;
+	}
+	.nav-logo{
+		display: none;
 	}
 
 	.menu-options {
@@ -149,8 +183,8 @@ body {
 /*#region Mobile Menu Button*/
 	#mobile-hamburg {
 		display: block;
-		background-color: auzre;
-		width: 4rem;
+		background-color: antiquewhite;
+		width: 3.25rem;
 		border-radius: 15px;
 		border: 2px solid rgb(20, 20, 20);
 		fill: rgb(20, 20, 20);
@@ -158,21 +192,22 @@ body {
 
 	#hamburg-svg *{
 		transform-origin: center;
-		--animDuration: 200ms;
+		--animDuration: 100ms;
+		--rotateDuration: 165ms;
 	}
 
 	#hamburg-svg * {
 		transition: 
-			transform 100ms ease-out 0ms,
-		 	y var(--animDuration) linear 100ms,
-			opacity 0.001ms ease-out 100ms;
+			transform var(--rotateDuration) ease-out 0ms,
+		 	y var(--animDuration) ease-out var(--rotateDuration),
+			opacity 0.001ms ease-out var(--rotateDuration);
 	}
 
 	#hamburg-svg.hamburg-svg-close > * {
 		y: 44;
 		transition: 
 			y var(--animDuration), 
-			transform 100ms linear var(--animDuration),
+			transform var(--rotateDuration) ease-out var(--animDuration),
 			opacity 0.001ms ease-out var(--animDuration);
 
 	}
