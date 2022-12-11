@@ -16,6 +16,7 @@ function stickHeader() {
 	}
 }
 
+
 document.addEventListener("scroll", stickHeader);
 const mobileHamburg = document.getElementById("mobile-hamburg");
 mobileHamburg.addEventListener("click", () => {
@@ -26,5 +27,14 @@ mobileHamburg.addEventListener("click", () => {
 console.log("start");
 
 let vh = window.innerHeight * 0.01;
-// Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+
+
+const click = {
+	subscribers: [],
+	addSubscriber: (subFunction)=>{subscribers.push(subFunction)},
+	removeSubscriver: (subFunction)=>{subscribers.remove(subFunction)},
+	triggerEvent: (e)=>{subscribers.forEach((sub)=>{sub(e);})}
+}
+

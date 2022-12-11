@@ -28,6 +28,7 @@ html {
 
 body {
 	width: 100%;
+	background-color: black;
 }
 
 .hero-bg {
@@ -35,20 +36,20 @@ body {
 	flex-grow: 0;
 }
 
-.hero-bg::before {
+/* .hero-bg::before {
 	content: "";
 	visibility: visible;
 	position: fixed;
-	top: 0;
+	top:0;
 	left: 0;
-	width: 100vw;
-	height: calc(var(--vh, 1vh) * 100);
+	width: calc(var(--vw, 1vw) * 100);
+	height: calc(var(--vdh, 1vh) * 100);
 	z-index: -999;
 	background-image: url("~/images/wood_heroImage3.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	filter: saturate(105%) contrast(130%) brightness(80%);
-}
+} */
 
 .hero {
 	min-height: fit-content;
@@ -59,6 +60,13 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+
+	/* background-image: url("~/images/wood_heroImage3.png"); */
+	background-image: url("~/images/woodboardFIltered.png");
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* filter: saturate(105%) contrast(130%) brightness(80%); */
 }
 
 .nav-header {
@@ -74,7 +82,6 @@ body {
 	justify-items: center;
 	align-items: center;
 	z-index: 2;
-	transition: background-color 0.35s;
 }
 
 .fixed-header-js {
@@ -83,12 +90,11 @@ body {
 	background: linear-gradient(rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 70%, transparent);
 	display: flex;
 	justify-content: center;
-	gap: 2rem;
 	animation: popIn 300ms ease-out forwards;
 }
 
 .unfix-header-js {
-	animation: fadeOut 500ms linear forwards;
+	animation: fadeOutIn 500ms linear forwards;
 }
 
 
@@ -155,7 +161,6 @@ body {
 	}
 	.nav-header.fixed-header-js {
 		background: none;
-		transition: unset;
 	}
 
 	.nav-logo{
@@ -165,17 +170,17 @@ body {
 	.menu-options {
 		display: none;
 	}
-
-	#mobile-hamburg {
+	button#mobile-hamburg {
 		flex-shrink: 0;
 		display: block;
-		width: 2.5rem;
+		width: 2.75rem;
 		border-radius: 15px;
 		border: 2px solid rgb(20, 20, 20);
 		fill: rgb(20, 20, 20);
 		overflow: hidden;
 		background: rgb(222, 177, 148);
 	}
+
 /*#region Mobile Hamburger Menu Animations*/
 
 
@@ -220,19 +225,34 @@ body {
 	nav#nav-header.hamburg-open {
 		position: fixed;
 		top:0;
-		background: rgb(146, 134, 126);
+		gap: 2rem;
+		/* background-color: rgb(104, 78, 61); */
 		flex-direction: column;
 		align-items: flex-start ;
 		width: 100%;
 		height: 100%;
-		/* transition: background-color 0.5s; */
+		animation: fadeOutIn 500ms linear forwards, fadeBg 650ms linear forwards;
 	}
+	nav#nav-header.fixed-header-js.hamburg-open {
+		animation: popIn 300ms ease-out forwards, fadeBg 650ms linear forwards;
+	}
+	
+	@keyframes fadeBg {
+		from {
+			background-color: transparent;
+		}
+		to {
+			background-color: rgb(104, 78, 61);
+		}
+	}
+
+	
 
 	#nav-header.hamburg-open #hamburg-wrapper {
 		width: 100%;
 		padding-bottom: 0.75rem;
 		border-bottom: 2px dashed whitesmoke;
-
+		
 	}
 
 	/*Mobile Drop down menu*/
@@ -242,10 +262,10 @@ body {
 		top:0;
 		width: 100%;
 		overflow-y: auto;
-		animation: 675ms cubic-bezier(0.03, 0.86, 0.39, 1.02) 0ms 1 normal popInRelative;
+		animation: 675ms cubic-bezier(0.03, 0.86, 0.39, 1.02) 0ms 1 normal popInRelative, fadeIn 750ms linear;
 	}
 	#nav-header.hamburg-open #mobile-menu >li:first-child {
-		padding-top: 0.5rem;
+		padding-top: 0.75rem;
 	}
 	#nav-header.hamburg-open #mobile-menu > li {
 		padding: 1.5rem 0 1.5rem 0rem;
@@ -286,7 +306,16 @@ body {
 	}
 }
 
-@keyframes fadeOut {
+@keyframes fadeIn {
+	from { 
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOutIn {
 	0%{
 		opacity: 1;
 		position: fixed;
