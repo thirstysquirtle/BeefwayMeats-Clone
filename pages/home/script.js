@@ -31,10 +31,5 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 
 
-const click = {
-	subscribers: [],
-	addSubscriber: (subFunction)=>{subscribers.push(subFunction)},
-	removeSubscriver: (subFunction)=>{subscribers.remove(subFunction)},
-	triggerEvent: (e)=>{subscribers.forEach((sub)=>{sub(e);})}
-}
-
+// screen.orientation.onchange = () => {window.location.reload()};
+window.addEventListener("orientationchange", ()=> window.location.reload());
