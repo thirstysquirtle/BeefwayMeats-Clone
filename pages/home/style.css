@@ -161,7 +161,6 @@ body {
 	font-weight: 300;
 	/* line-height: 2rem; */
 	letter-spacing: 0.05em;
-	
 }
 .section-text > h1 {
 	font-weight: 900 ;
@@ -183,10 +182,15 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: stretch;
-	min-height: 25vh;
-	
+	min-height: 25vh;	
 }
-
+.highlight {
+	font-weight: 800;
+	color: whitesmoke;
+	position: relative;
+	background-color: #5079C8;
+	z-index: 1;
+}
 
 .page-break {
 	height: calc(var(--vh, 1vh) * 200);
